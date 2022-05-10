@@ -1,13 +1,10 @@
 def flat_generator(input_list):
-    lst = []
     for element in input_list:
         if isinstance(element, list):
-            lst.extend(flat_generator(element))
+            for item in flat_generator(element):
+                yield item
         else:
-            lst.append(element)
-
-    return lst
-
+            yield element
 
 if __name__ == "__main__":
     nested_list = [
